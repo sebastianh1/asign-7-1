@@ -1,0 +1,162 @@
+/*******************************************************************************
+* AUTHOR     : Sebastian Hooshmand
+* ASIGN #7   : Repetition & Selection
+* CLASS      : CS1A
+* SECTION    : MW: 8am
+* DUE DATE   : 3/28/18
+*******************************************************************************/
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+
+/*******************************************************************************
+* Repetition & Selection
+*-------------------------------------------------------------------------------
+*	This program will output the total grade points and the grade point average
+*-------------------------------------------------------------------------------
+* INPUT:
+*    letterGrade
+*
+*   OUTPUT:
+*    totalGradePoints
+*    gradePointAverage
+*
+*******************************************************************************/
+int main()
+{
+	/***************************************************************************
+	* CONSTANTS
+	* --------------------------------------------------------------------------
+	* OUTPUT - USED FOR CLASS HEADING
+	* --------------------------------------------------------------------------
+	* PROGRAMMER    : Programmer's name
+	* CLASS         : Student's Course
+	* SECTION       : Class Days and Times
+	* ASSIGN_NUM    : Assign Number (specific to this lab)
+	* ASSIGN_NAME   : Title of the Lab
+	***************************************************************************/
+	const char PROGRAMMER []  = "Sebastian Hooshmand";
+	const char CLASS[]        = "CS1A";
+	const char SECTION []     = "MW: 8am-11:50am";
+	const int  ASSIGN_NUM     = 7;
+	const char ASSIGN_NAME[]  = "Repetition & Selection";
+
+	// variable declarations
+	float 	totalGradePoints;		// Sum of all grade points
+	int 	count;					// Counter for loop
+	float 	letterGradeCount;		// Counter for the letterGrades
+	char 	letterGrade;			// letterGrade input Variable
+	float 	gradePointAverage;		// Grade point average
+	int 	gradeNumber;			// counter for the grade #
+
+
+
+	// OUTPUT - Class Heading
+	cout << left;
+	cout << "**************************************************\n";
+	cout << "*  PROGRAMMED BY : "  << PROGRAMMER << endl;
+	cout << "*  "      << setw(14) << "CLASS"     << ": " << CLASS    << endl;
+	cout << "*  "      << setw(14) << "SECTION"   << ": " << SECTION  << endl;
+	cout << "*  ASSIGN #" << setw(6)  << ASSIGN_NUM << ": " << ASSIGN_NAME;
+	cout << endl;
+	cout << "**************************************************\n\n";
+	cout << right;
+
+
+/**********************************************************************
+*INPUT - prompting the user to input the letter grades
+*********************************************************************/
+	for(count = 1; count <= 3; count = count + 1)
+	{
+
+
+		totalGradePoints 		 = 0;
+		letterGradeCount 		 = 0;
+		gradeNumber				 = 1;
+
+
+
+		cout << "TEST CASE #" << count << ":" << endl;
+
+		cout << right;
+		cout << setw(24) << "Enter Letter Grade #" << gradeNumber << ":";
+
+
+		cin  >> letterGrade;
+		cin.ignore(1000,'\n');
+		letterGrade = toupper(letterGrade);
+
+
+		while (letterGrade != 'X')
+		{
+
+			switch(letterGrade)
+			{
+			case 'A' : totalGradePoints = totalGradePoints + 4.00;
+					   break;
+			case 'B' : totalGradePoints = totalGradePoints + 3.00;
+					   break;
+			case 'C' : totalGradePoints = totalGradePoints + 2.00;
+					   break;
+			case 'D' : totalGradePoints = totalGradePoints + 1.00;
+					   break;
+			case 'F' : totalGradePoints = totalGradePoints + 0.00;
+					   break;
+
+			default : cout << "Please enter a valid letter grade.";
+				break;
+
+
+			}
+
+		gradeNumber = gradeNumber + 1;
+		letterGradeCount = letterGradeCount + 1;
+
+		cout << setw(24) << "Enter Letter Grade #" << gradeNumber << ":";
+		cin  >> letterGrade;
+		cin.ignore(1000,'\n');
+		letterGrade	= toupper(letterGrade);
+
+
+
+		}
+
+		/**********************************************************************
+		 * Processing - calculate the grade point average
+		 *********************************************************************/
+
+		gradePointAverage = totalGradePoints / letterGradeCount;
+
+
+		/**********************************************************************
+		 * OUTPUT - outputs the total grade points and the grade point average
+		 *********************************************************************/
+
+
+
+
+
+
+		if (letterGradeCount > 0)
+		{
+			cout << endl 	<< "Total Grade Points: " << totalGradePoints
+				 <<endl;
+			cout << setprecision(2)	<< fixed;
+			cout << "GPA: " << gradePointAverage << endl << endl <<endl;
+
+
+
+		}
+
+	}
+
+
+
+
+
+
+
+	return 0;
+}
